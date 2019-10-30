@@ -8,11 +8,11 @@ def sub(a,b):
     return a - b
 
 operators = {
-        's': add,
+        '+': add,
         '-': sub,
         }
 
-def calculate(string):
+def calculate(arg):
     stack = list()
     for token in arg.split():
         try:
@@ -41,7 +41,7 @@ def calculate(string):
 
         print(stack)
     if len(stack) != 1:
-        raise TypeError('Malformed input: ' + string)
+        raise TypeError('Malformed input: ' + arg)
     return stack.pop()
 
 def main():
