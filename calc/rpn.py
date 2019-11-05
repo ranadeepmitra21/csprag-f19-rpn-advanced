@@ -7,7 +7,8 @@ operators = {
         '-': operator.sub,
         "*": operator.mul,
         "/": operator.floordiv,
-        "^": operator.pow
+        "^": operator.pow,
+        "mod": operator.mod,
         }
 
 def calculate(arg):
@@ -22,7 +23,7 @@ def calculate(arg):
             arg1 = stack.pop()
             result = function(arg1, arg2)
             stack.append(result)
-        
+
     #for token in string.split():
         #if token == '+':
          #   arg1 = stack.pop()
