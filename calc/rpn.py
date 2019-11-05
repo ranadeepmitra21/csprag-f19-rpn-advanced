@@ -17,6 +17,14 @@ operators = {
 def calculate(arg):
 
     for token in arg.split():
+        if token == 'exit':
+            print(colored('Exiting RPN Calculator', 'magenta'))
+            exit()
+
+    print(colored('     * * * RPN Calculator * * *     ', 'white', 'on_blue'))
+
+    print(colored('Input', 'white', 'on_cyan'))
+    for token in arg.split():
         try:
             value = int(token)
             print(colored(token, 'cyan'), end = " ")
@@ -26,7 +34,7 @@ def calculate(arg):
     print()
     print()
 
-    print(colored('The stack:', 'red'))
+    print(colored('RPN Stack', 'white', 'on_red'))
     stack = list()
     count = 0
     for token in arg.split():
@@ -41,17 +49,21 @@ def calculate(arg):
             result = function(arg1, arg2)
             stack.append(result)
 
-        print(colored(count, 'red') + ': '+ colored(stack, 'blue'))
+        print(colored(str(count).zfill(2), 'magenta') +
+            ': '+ colored(stack, 'blue'))
 
     if len(stack) == 0:
-        raise TypeError('Empty Stack')
+        raise TypeError(colored('Empty Stack', 'red'))
     if len(stack) != 1:
-        raise TypeError('Malformed input: ' + arg)
+        raise TypeError(colored('Malformed input: ', 'red') + arg)
 
-    print(colored('\nResult', 'green'))
-    print(colored(stack, 'green'))
+    result = stack.pop()
 
-    return stack.pop()
+    print(colored('\nResult', 'white', 'on_green'))
+    print(colored(result, 'green'))
+
+    print(colored('                                    ', 'white', 'on_blue'))
+    return result
 
 def main():
     while True:
