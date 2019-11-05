@@ -2,6 +2,7 @@
 
 import operator
 import sys
+import readline
 from termcolor import colored, cprint
 
 operators = {
@@ -14,6 +15,17 @@ operators = {
         }
 
 def calculate(arg):
+
+    for token in arg.split():
+        try:
+            value = int(token)
+            print(colored(token, 'cyan'), end = " ")
+        except ValueError:
+            print(colored(token, 'yellow'), end = " ")
+
+    print()
+    print()
+
     print(colored('The stack:', 'red'))
     stack = list()
     count = 0
@@ -31,20 +43,6 @@ def calculate(arg):
 
         print(colored(count, 'red') + ': '+ colored(stack, 'blue'))
 
-    #for token in string.split():
-        #if token == '+':
-         #   arg1 = stack.pop()
-          #  arg2 = stack.pop()
-           # result = arg1 + arg2
-           # stack.append(result)
-       # elif token == '-':
-        #    arg2 = stack.pop()
-         #   arg1 = stack.pop()
-          #  result = arg1 - arg2
-           # stack.append(result)
-       # else:
-        #    stack.append(int(token))
-
     if len(stack) == 0:
         raise TypeError('Empty Stack')
     if len(stack) != 1:
@@ -58,7 +56,6 @@ def calculate(arg):
 def main():
     while True:
         calculate(input('rpn calc> '))
-
 
 if __name__ == '__main__':
     main()
