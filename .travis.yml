@@ -1,1 +1,7 @@
-language: pythonpython:  - "3.6"script:  - "make"
+language: python
+python:
+  - "3.6"
+script:
+  - "make"
+after_success:
+  - coveralls
