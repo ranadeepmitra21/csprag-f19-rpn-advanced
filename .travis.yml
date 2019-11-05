@@ -5,6 +5,7 @@ install:
   - pip install pytest
   - pip install pytest-cov
   - pip install coveralls
+  - pip3 install termcolor
 script:
   - pytest --cov=calc/
 after_success:
